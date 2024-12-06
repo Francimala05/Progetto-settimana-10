@@ -1,5 +1,7 @@
 import { useState } from "react";
 import {useNavigate} from 'react-router-dom'
+import {Form,Button, InputGroup} from "react-bootstrap";
+import {FaSearch} from 'react-icons/fa';
 
 const HomePage = () => {
     const [city,setCity] = useState('')
@@ -15,12 +17,23 @@ const HomePage = () => {
         }
    
 return(
-    <div  style={{textAlign:'center'}}>{<h1 style={{textAlign:'center', marginTop:'200px'}}>Cerca una città!</h1>}
-    <form>
-        <input type="text" value={city} onChange={handleInputChange} placeholder="indica la località su cui vuoi informazioni"/> 
-        <button onClick={handleSubmit} type="submit">Cerca</button>
-    </form>
-    </div>
+    <div className="container" style={{ textAlign: 'center', marginTop: '100px' }}>
+            <h1 style={{ marginBottom: '30px' }}>Cerca una città!</h1>
+            <Form onSubmit={handleSubmit}>
+                <InputGroup className="mb-3">
+                    <Form.Control
+                        type="text"
+                        value={city}
+                        onChange={handleInputChange}
+                        placeholder="Indica una località..."
+                        style={{ fontSize: '1.2rem', paddingBottom: '5px', paddingTop: '13px'}}
+                    />
+                    <Button type="submit" variant="outline-primary" style={{ fontSize: '2.0rem',paddingBottom: '2px'}}>
+                        <FaSearch />
+                    </Button>
+                </InputGroup>
+            </Form>
+            </div>
 
 );
 };
